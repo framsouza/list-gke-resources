@@ -106,10 +106,10 @@ func listResources(svc *container.Service, projectID, zone, rs string) string {
 				ns = policy.Namespace
 			}
 
-			fmt.Fprintf(w, "\n%s\t\t\t%s\t\t%s\t\t\n", "GKE NAME", "RESOURCE NAME", "NAMESPACE")
+			fmt.Fprintf(w, "\n%s\t\t\t%s\t\t\n", "GKE NAME", "RESOURCE NAME")
 
 			for index := range resources {
-				fmt.Fprintf(w, "%s\t\t\t%s\t\t%s\t\t\n", v.Name, resources[index], ns)
+				fmt.Fprintf(w, "%s\t\t\t%s\t\t\n", v.Name, resources[index])
 			}
 
 		case "pods":
