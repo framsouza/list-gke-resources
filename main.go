@@ -25,9 +25,6 @@ var (
 )
 
 func main() {
-	w := new(tabwriter.Writer)
-	w.Init(os.Stdout, 10, 10, 0, ' ', 0)
-	defer w.Flush()
 
 	flag.Parse()
 	if *resource == "" {
@@ -73,8 +70,6 @@ func listResources(svc *container.Service, projectID, zone, rs string) string {
 	if err != nil {
 		return rs
 	}
-
-	// header
 
 	kubeConfig, err := kubectl.GetK8sClusterConfigs(context.TODO(), projectID)
 	if err != nil {
@@ -165,6 +160,13 @@ func listResources(svc *container.Service, projectID, zone, rs string) string {
 			for index := range resources {
 				fmt.Fprintf(w, "%s\t\t\t%s\t\t%s\t\t\n", v.Name, resources[index], ns)
 			}
+
+		case "version":
+			fmt.Fprintf(w, "\n%s\t\t\t%s\t\t%s\t\t\n", "GKE NAME", "MASTER VERSION", "NODE VERSION")
+			fmt.Fprintf(w, "%s\t\t\t", v.Name)
+			fmt.Fprintf(w, "%s\t\t", v.CurrentMasterVersion)
+			fmt.Fprintf(w, "%s\t\t\n", v.CurrentNodeVersion)
+
 		}
 
 	}

@@ -1,7 +1,7 @@
 # Listing gke resources
 
 This is a simple code that will list the Kubernetes resources using client-go.
-The resources available at the moment is, `pods`, `deployments`, `nodes`, `statefulsets` and `policysecurity`.
+The resources available at the moment is, `pods`, `deployments`, `nodes`, `statefulsets`, `policysecurity` and `version`.
 
 ### Usage
 You must specify the project and resource you want to check by adding the `-project` and `-resource` parameters, like this:
