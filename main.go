@@ -20,7 +20,6 @@ var (
 	projectID = flag.String("project", "", "Enter the Project ID")
 	zone      = flag.String("zone", "-", "Enter the Compute zone")
 	resource  = flag.String("resource", "", "Enter the resource type")
-	resources []string
 	ns        string
 )
 
@@ -88,6 +87,8 @@ func listResources(svc *container.Service, projectID, zone, rs string) string {
 		if err != nil {
 			return rs
 		}
+
+		var resources []string
 
 		switch rs {
 		case "policysecurity":
